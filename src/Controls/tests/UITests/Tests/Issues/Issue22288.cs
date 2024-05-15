@@ -15,20 +15,20 @@ namespace Microsoft.Maui.AppiumTests.Issues
 		public void AppDoesntFreezeWhenRotatingDevice()
 		{
 			this.IgnoreIfPlatforms(new TestDevice[] { TestDevice.Mac, TestDevice.Windows });
-            try
-            {
-                App.SetOrientationPortrait();
-			    var portraitRect = App.WaitForElement("outerScrollView").GetRect();
-                App.SetOrientationLandscape();
-			    var landscapeRect = App.WaitForElement("outerScrollView").GetRect();
+			try
+			{
+				App.SetOrientationPortrait();
+				var portraitRect = App.WaitForElement("outerScrollView").GetRect();
+				App.SetOrientationLandscape();
+				var landscapeRect = App.WaitForElement("outerScrollView").GetRect();
 
-                Assert.Greater(landscapeRect.Width, portraitRect.Width);
+				Assert.Greater(landscapeRect.Width, portraitRect.Width);
 
-            }
-            finally
-            {
-                App.SetOrientationPortrait();
-            }
+			}
+			finally
+			{
+				App.SetOrientationPortrait();
+			}
 		}
 	}
 }
